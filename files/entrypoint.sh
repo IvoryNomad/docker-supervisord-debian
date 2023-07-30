@@ -24,7 +24,7 @@ find "/entrypoint.d/" -follow -type f -print | sort -V | while read -r f; do
 done
 
 if [ -z "$@" ]; then
-    exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
+    exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
 else
-    exec PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $@
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin exec $@
 fi
