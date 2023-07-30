@@ -13,10 +13,8 @@ RUN <<EOT /bin/bash
     mkdir /entrypoint.d
 EOT
 
-#COPY ./files/config /etc/supervisor 
-ADD ./files/config/supervisord.conf /etc/supervisor 
-#COPY ./files/entrypoint.sh /
-ADD ./files/entrypoint.sh /entrypoint.sh
+COPY ./files/config/supervisord.conf /etc/supervisor 
+COPY ./files/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 VOLUME [ "/etc/supervisor", "/var/log/supervisor" ]
 ENTRYPOINT [ "/entrypoint.sh" ]
